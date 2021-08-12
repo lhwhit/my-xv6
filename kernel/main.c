@@ -18,12 +18,10 @@ main()
     printf("\n");
     __sync_synchronize();
     started = 1;
-    printf("hart %d starting\n", cpuid());
-  } else {
-    while(started == 0)
-      ;
-    __sync_synchronize();
-    printf("hart %d starting\n", cpuid());
-  }  
+  }
+  while(started == 0)
+    ;
+  __sync_synchronize();
+  printf("hart %d starting\n", cpuid());
   while(1);        
 }
